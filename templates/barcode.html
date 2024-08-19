@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Generator</title>
+</head>
+<body>
+    <h1>Barcode Generator</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="data">Enter data for barcode:</label>
+        <input type="text" id="data" name="data" required>
+        <button type="submit">Generate Barcode</button>
+    </form>
+
+    {% if img_str %}
+        <h2>Your Barcode:</h2>
+        <img src="data:image/png;base64,{{ img_str|safe }}" alt="Barcode">
+    {% endif %}
+</body>
+</html>
